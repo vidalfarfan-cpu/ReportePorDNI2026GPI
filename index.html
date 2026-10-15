@@ -66,8 +66,8 @@
           <select id="mes" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
             <option value="1">Enero</option><option value="2">Febrero</option><option value="3">Marzo</option>
             <option value="4">Abril</option><option value="5">Mayo</option><option value="6">Junio</option>
-            <option value="7">Julio</option><option value="8" selected>Agosto</option><option value="9">Septiembre</option>
-            <option value="10">Octubre</option><option value="11">Noviembre</option><option value="12">Diciembre</option>
+            <option value="7">Julio</option><option value="8">Agosto</option><option value="9">Septiembre</option>
+            <option value="10" selected>Octubre</option><option value="11">Noviembre</option><option value="12">Diciembre</option>
           </select>
         </div>
         <div>
@@ -112,25 +112,30 @@
       </button>
     </div>
 
-    <!-- Indicadores Percentuales (KPIs) -->
-    <div id="kpiContainer" class="hidden grid grid-cols-2 md:grid-cols-4 gap-4">
+    <!-- Indicadores Porcentuales (KPIs) -->
+    <div id="kpiContainer" class="hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
       <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
-        <p class="text-xs text-slate-500 font-bold uppercase">Muy Puntual</p>
+        <p class="text-[11px] text-slate-500 font-bold uppercase">Muy Puntual</p>
         <p id="kpiMuyPuntual" class="text-2xl font-black text-emerald-600 mt-1">0%</p>
         <span id="cntMuyPuntual" class="text-[11px] text-slate-400 font-medium">0 días</span>
       </div>
       <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
-        <p class="text-xs text-slate-500 font-bold uppercase">Puntual</p>
+        <p class="text-[11px] text-slate-500 font-bold uppercase">Puntual</p>
         <p id="kpiPuntual" class="text-2xl font-black text-amber-500 mt-1">0%</p>
         <span id="cntPuntual" class="text-[11px] text-slate-400 font-medium">0 días</span>
       </div>
       <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
-        <p class="text-xs text-slate-500 font-bold uppercase">Tardanzas</p>
+        <p class="text-[11px] text-slate-500 font-bold uppercase">Tardanza</p>
         <p id="kpiTardanza" class="text-2xl font-black text-orange-600 mt-1">0%</p>
         <span id="cntTardanza" class="text-[11px] text-slate-400 font-medium">0 días</span>
       </div>
+      <div class="bg-sky-50 p-4 rounded-xl border border-sky-200 shadow-sm text-center">
+        <p class="text-[11px] text-sky-800 font-bold uppercase">Falta Just. (FJ)</p>
+        <p id="kpiFaltaJustificada" class="text-2xl font-black text-sky-600 mt-1">0%</p>
+        <span id="cntFaltaJustificada" class="text-[11px] text-sky-600 font-medium">0 días</span>
+      </div>
       <div class="bg-slate-100 p-4 rounded-xl border border-slate-300 shadow-sm text-center">
-        <p class="text-xs text-slate-700 font-bold uppercase">Faltas</p>
+        <p class="text-[11px] text-slate-700 font-bold uppercase">Falta Injust.</p>
         <p id="kpiFalta" class="text-2xl font-black text-slate-800 mt-1">0%</p>
         <span id="cntFalta" class="text-[11px] text-slate-500 font-medium">0 días</span>
       </div>
@@ -148,10 +153,11 @@
           <canvas id="chartAsistencia"></canvas>
         </div>
         <p class="text-[12px] text-slate-800 text-center mt-2 italic">* Gráfico de proporción de días evaluados.</p>
-        <p class="text-[10px] text-slate-400 text-center mt-2 italic">Antes de 7:50am --> Muy Puntual</p>
-        <p class="text-[10px] text-slate-400 text-center mt-2 italic">7:51am a 8:00am --> Puntual</p>
-        <p class="text-[10px] text-slate-400 text-center mt-2 italic">8:01am a 8:30am --> Tardanza</p>
-        <p class="text-[10px] text-slate-400 text-center mt-2 italic">8:30am a mas o No Registró --> Falta</p>
+        <p class="text-[10px] text-slate-400 text-center mt-1 italic">Antes de 7:50am --> Muy Puntual</p>
+        <p class="text-[10px] text-slate-400 text-center italic">7:51am a 8:00am --> Puntual</p>
+        <p class="text-[10px] text-slate-400 text-center italic">8:01am a 8:30am --> Tardanza</p>
+        <p class="text-[10px] text-sky-600 font-medium text-center italic">FJ --> Falta Justificada (con motivo)</p>
+        <p class="text-[10px] text-slate-400 text-center italic">8:30am a más / No Registró --> Falta</p>
       </div>
 
       <!-- Calendario -->
@@ -175,17 +181,17 @@
     <!-- Tabla Detallada -->
     <div id="seccionTablaDetallada" class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
       <h2 class="text-base font-bold text-slate-800 mb-4 flex items-center gap-2">
-        <i class="fa-solid fa-list-check text-indigo-600"></i> REGISTRO DETALLADO Y PRESENTACIÓN PERSONAL
+        <i class="fa-solid fa-list-check text-indigo-600"></i> REGISTRO DETALLADO, PRESENTACIÓN Y MOTIVOS
       </h2>
       <div class="overflow-x-auto">
         <table class="w-full text-left text-sm border-collapse">
           <thead>
             <tr class="border-b border-slate-200 bg-slate-50 text-slate-600 font-bold text-xs uppercase tracking-wider">
               <th class="py-3 px-4">Fecha</th>
-              <th class="py-3 px-4">Hora de Entrada</th>
-              <th class="py-3 px-4">Estado de Asistencia</th>
+              <th class="py-3 px-4">Hora Entrada</th>
+              <th class="py-3 px-4">Estado</th>
               <th class="py-3 px-4">Uniforme Completo</th>
-              <th class="py-3 px-4">Observaciones / Presentación</th>
+              <th class="py-3 px-4">Observación / Motivo de Justificación</th>
             </tr>
           </thead>
           <tbody id="tablaDetalles" class="divide-y divide-slate-100">
@@ -203,18 +209,52 @@
   </div>
 
   <script>
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbw1jdmY7NHUoTMD-hBfLol8hVfhcsAc0j1gMLkA0NTSgHNN3Z0E5Vbr7OPQEl9Gmewe/exec';
-                         
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx5Ny48aDDDgsNNJR11xDr3jZ4cDu-Zee5So0CV6xdYobv5IIi5LWY3x5-tM6zsNUaS/exec';
     let chartInstance = null;
 
+    // Calendario de Feriados y Días No Lectivos de la Institución
     const FERIADOS_PERU_2026 = {
-      '2026-01-01': 'Año Nuevo', '2026-04-02': 'Jueves Santo', '2026-04-03': 'Viernes Santo',
-      '2026-05-01': 'Día del Trabajo', '2026-06-07': 'Batalla de Arica', '2026-06-29': 'San Pedro y San Pablo',
-      '2026-07-23': 'Día FAP', '2026-07-28': 'Fiestas Patrias', '2026-07-29': 'Fiestas Patrias',
-      '2026-08-06': 'Batalla de Junín', '2026-08-30': 'Santa Rosa de Lima', '2026-10-08': 'Combate de Angamos',  '2026-09-14': 'Señor de Huanca',
-      '2026-09-23': 'Día del Estudiante', '2026-11-01': 'Todos los Santos', '2026-12-08': 'Inmaculada Concepción', '2026-12-09': 'Batalla de Ayacucho',
+      '2026-01-01': 'Año Nuevo', 
+      '2026-04-02': 'Jueves Santo', 
+      '2026-04-03': 'Viernes Santo',
+      '2026-05-01': 'Día del Trabajo', 
+      '2026-06-07': 'Batalla de Arica', 
+      '2026-06-29': 'San Pedro y San Pablo',
+      '2026-07-23': 'Día FAP', 
+      '2026-07-28': 'Fiestas Patrias', 
+      '2026-07-29': 'Fiestas Patrias',
+      '2026-08-06': 'Batalla de Junín', 
+      '2026-08-30': 'Santa Rosa de Lima', 
+      '2026-09-14': 'Señor de Huanca',
+      '2026-09-23': 'Paseo por el Día del Estudiante',
+      '2026-10-09': 'Feriado (Combate de Angamos)',
+      '2026-10-12': 'Semana de Gestión', 
+      '2026-10-13': 'Semana de Gestión',
+      '2026-10-14': 'Semana de Gestión',
+      '2026-10-15': 'Semana de Gestión',
+      '2026-10-16': 'Semana de Gestión',
+      '2026-11-01': 'Todos los Santos', 
+      '2026-12-08': 'Inmaculada Concepción', 
+      '2026-12-09': 'Batalla de Ayacucho',
       '2026-12-25': 'Navidad'
     };
+
+    function obtenerFechaInicioGrado(gradoRaw) {
+      if (!gradoRaw) return null;
+      const key = gradoRaw.toUpperCase().replace(/[\s°]/g, '');
+      const fechasInicio = {
+        '1A': '2026-08-24',
+        '1B': '2026-08-24',
+        '2U': '2026-08-18',
+        '3A': '2026-09-03',
+        '3B': '2026-09-03',
+        '4A': '2026-09-02',
+        '4B': '2026-09-02',
+        '5A': '2026-09-01',
+        '5B': '2026-09-01'
+      };
+      return fechasInicio[key] || null;
+    }
 
     function normalizarFecha(str) {
       if (!str) return '';
@@ -249,10 +289,29 @@
           return;
         }
 
-        const asistenciasNorm = (data.asistencias || []).map(a => ({
-          ...a,
-          fechaNorm: normalizarFecha(a.fecha)
-        }));
+        const asistenciasNorm = (data.asistencias || []).map(a => {
+          let estadoNormalizado = a.estado;
+          let colorNormalizado = a.color;
+
+          if (
+            estadoNormalizado === 'FJ' || 
+            estadoNormalizado === 'Falta Justificada' || 
+            estadoNormalizado === 'FALTA JUSTIFICADA' ||
+            a.justificada === true || 
+            a.justificada === 'SI' ||
+            a.justificada === 'TRUE'
+          ) {
+            estadoNormalizado = 'Falta Justificada';
+            colorNormalizado = '#0284c7';
+          }
+
+          return {
+            ...a,
+            estado: estadoNormalizado,
+            color: colorNormalizado,
+            fechaNorm: normalizarFecha(a.fecha)
+          };
+        });
 
         document.getElementById('fichaEstudiante').classList.remove('hidden');
         document.getElementById('fichaEstudiante').classList.add('flex');
@@ -263,7 +322,7 @@
         document.getElementById('gradoEstudiante').innerText = data.estudiante.gradoSeccion || '---';
         document.getElementById('dniEstudiante').innerText = data.estudiante.dni || dni;
 
-        const metricas = procesarAsistenciasYFaltas(asistenciasNorm, mes, anio);
+        const metricas = procesarAsistenciasYFaltas(asistenciasNorm, mes, anio, data.estudiante.gradoSeccion);
 
         renderKPIs(metricas);
         renderTable(asistenciasNorm, metricas.diasFalta, metricas.diasFeriado);
@@ -279,13 +338,21 @@
       }
     });
 
-    function procesarAsistenciasYFaltas(asistencias, mes, anio) {
+    function procesarAsistenciasYFaltas(asistencias, mes, anio, gradoSeccion) {
       const hoy = new Date();
       const diasEnMes = new Date(anio, mes, 0).getDate();
       const diasFalta = [];
       const diasFeriado = [];
 
-      let conteo = { 'Muy Puntual': 0, 'Puntual': 0, 'Tardanza': 0, 'Falta': 0 };
+      const fechaInicioGrado = obtenerFechaInicioGrado(gradoSeccion);
+
+      let conteo = { 
+        'Muy Puntual': 0, 
+        'Puntual': 0, 
+        'Tardanza': 0, 
+        'Falta Justificada': 0, 
+        'Falta': 0 
+      };
 
       asistencias.forEach(item => {
         if (conteo[item.estado] !== undefined) {
@@ -295,19 +362,15 @@
         }
       });
 
-      let diaInicioCalculo = 1;
-      if (asistencias.length > 0) {
-        const fechasOrdenadas = asistencias.map(a => a.fechaNorm).filter(Boolean).sort();
-        if (fechasOrdenadas.length > 0) {
-          diaInicioCalculo = parseInt(fechasOrdenadas[0].split('-')[2]);
-        }
-      }
-
-      for (let d = diaInicioCalculo; d <= diasEnMes; d++) {
+      for (let d = 1; d <= diasEnMes; d++) {
+        const dateStr = `${anio}-${String(mes).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
         const fechaEval = new Date(anio, mes - 1, d);
         if (fechaEval > hoy) continue;
 
-        const dateStr = `${anio}-${String(mes).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        if (fechaInicioGrado && dateStr < fechaInicioGrado) {
+          continue;
+        }
+
         const diaSemana = fechaEval.getDay();
 
         if (diaSemana >= 1 && diaSemana <= 5) {
@@ -324,7 +387,7 @@
         }
       }
 
-      const totalDiasEvaluados = conteo['Muy Puntual'] + conteo['Puntual'] + conteo['Tardanza'] + conteo['Falta'];
+      const totalDiasEvaluados = conteo['Muy Puntual'] + conteo['Puntual'] + conteo['Tardanza'] + conteo['Falta Justificada'] + conteo['Falta'];
 
       return {
         conteo,
@@ -335,6 +398,7 @@
           muyPuntual: totalDiasEvaluados ? ((conteo['Muy Puntual'] / totalDiasEvaluados) * 100).toFixed(1) : 0,
           puntual: totalDiasEvaluados ? ((conteo['Puntual'] / totalDiasEvaluados) * 100).toFixed(1) : 0,
           tardanza: totalDiasEvaluados ? ((conteo['Tardanza'] / totalDiasEvaluados) * 100).toFixed(1) : 0,
+          faltaJustificada: totalDiasEvaluados ? ((conteo['Falta Justificada'] / totalDiasEvaluados) * 100).toFixed(1) : 0,
           falta: totalDiasEvaluados ? ((conteo['Falta'] / totalDiasEvaluados) * 100).toFixed(1) : 0
         }
       };
@@ -349,6 +413,9 @@
 
       document.getElementById('kpiTardanza').innerText = `${m.porcentajes.tardanza}%`;
       document.getElementById('cntTardanza').innerText = `${m.conteo['Tardanza']} día(s)`;
+
+      document.getElementById('kpiFaltaJustificada').innerText = `${m.porcentajes.faltaJustificada}%`;
+      document.getElementById('cntFaltaJustificada').innerText = `${m.conteo['Falta Justificada']} día(s)`;
 
       document.getElementById('kpiFalta').innerText = `${m.porcentajes.falta}%`;
       document.getElementById('cntFalta').innerText = `${m.conteo['Falta']} día(s)`;
@@ -368,7 +435,7 @@
       const tbody = document.getElementById('tablaDetalles');
       tbody.innerHTML = '';
 
-      if (asistencias.length === 0 && diasFalta.length === 0) {
+      if (asistencias.length === 0 && diasFalta.length === 0 && diasFeriado.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" class="py-6 text-center text-slate-400">No hay registros para mostrar en este período.</td></tr>';
         return;
       }
@@ -389,14 +456,25 @@
       });
 
       diasFeriado.forEach(f => {
+        let estadoLabel = 'Feriado';
+        let colorBadge = '#64748B';
+        
+        if (f.nombre.includes('Gestión')) {
+          estadoLabel = 'Sin Clases';
+          colorBadge = '#6366F1';
+        } else if (f.nombre.includes('Paseo') || f.nombre.includes('Estudiante')) {
+          estadoLabel = 'Actividad';
+          colorBadge = '#0D9488';
+        }
+
         listaRegistros.push({
           fecha: f.fecha,
           fechaNorm: f.fecha,
           hora: '--:--',
-          estado: 'Feriado',
-          color: '#64748B',
+          estado: estadoLabel,
+          color: colorBadge,
           uniformado: 'N/A',
-          observacion: `Feriado: ${f.nombre}`,
+          observacion: f.nombre,
           tipo: 'feriado'
         });
       });
@@ -411,27 +489,31 @@
         }
 
         let obs = `<span class="text-slate-400 italic">Sin obs.</span>`;
-        if (item.tipo === 'falta') {
+        const motivoOTexto = item.motivo || item.observacion;
+
+        if (item.estado === 'Falta Justificada' || item.estado === 'FJ') {
+          obs = `<span class="text-sky-700 font-bold flex items-center gap-1.5"><i class="fa-solid fa-file-medical text-sky-600"></i> ${motivoOTexto || 'Justificación Médica / Permiso'}</span>`;
+        } else if (item.tipo === 'falta') {
           obs = `<span class="text-slate-600 font-medium">${item.observacion}</span>`;
         } else if (item.tipo === 'feriado') {
-          obs = `<span class="text-indigo-600 font-semibold"><i class="fa-solid fa-umbrella-beach mr-1"></i> ${item.observacion}</span>`;
-        } else if (item.observacion && item.observacion !== 'FALSE' && item.observacion !== 'bien') {
-          obs = `<span class="text-rose-600 font-semibold">${item.observacion}</span>`;
+          obs = `<span class="text-indigo-600 font-semibold"><i class="fa-solid fa-circle-info mr-1"></i> ${item.observacion}</span>`;
+        } else if (motivoOTexto && motivoOTexto !== 'FALSE' && motivoOTexto !== 'bien') {
+          obs = `<span class="text-rose-600 font-semibold">${motivoOTexto}</span>`;
         }
 
         const bgStyle = `background-color: ${item.color || '#374151'}`;
 
         tbody.innerHTML += `
           <tr class="hover:bg-slate-50 transition border-b border-slate-100 text-xs">
-            <td class="py-1 px-2 font-semibold text-slate-700">${item.fecha}</td>
-            <td class="py-1 px-2 text-slate-600">${item.hora} ${item.hora !== '--:--' ? 'AM' : ''}</td>
-            <td class="py-1 px-2">
-              <span class="px-2 py-0.5 rounded-full text-[9px] font-bold text-white" style="${bgStyle}">
+            <td class="py-1.5 px-2 font-semibold text-slate-700">${item.fecha}</td>
+            <td class="py-1.5 px-2 text-slate-600">${item.hora} ${item.hora !== '--:--' ? 'AM' : ''}</td>
+            <td class="py-1.5 px-2">
+              <span class="px-2 py-0.5 rounded-full text-[9px] font-bold text-white uppercase" style="${bgStyle}">
                 ${item.estado}
               </span>
             </td>
-            <td class="py-1 px-2">${uniformadoBadge}</td>
-            <td class="py-1 px-2 text-[10px]">${obs}</td>
+            <td class="py-1.5 px-2">${uniformadoBadge}</td>
+            <td class="py-1.5 px-2 text-[11px]">${obs}</td>
           </tr>`;
       });
     }
@@ -445,10 +527,16 @@
       chartInstance = new Chart(ctx, {
         type: 'doughnut',
         data: {
-          labels: ['Muy Puntual', 'Puntual', 'Tardanza', 'Falta'],
+          labels: ['Muy Puntual', 'Puntual', 'Tardanza', 'Falta Just.', 'Falta Injust.'],
           datasets: [{
-            data: [m.conteo['Muy Puntual'], m.conteo['Puntual'], m.conteo['Tardanza'], m.conteo['Falta']],
-            backgroundColor: ['#059669', '#D97706', '#EA580C', '#374151'],
+            data: [
+              m.conteo['Muy Puntual'], 
+              m.conteo['Puntual'], 
+              m.conteo['Tardanza'], 
+              m.conteo['Falta Justificada'], 
+              m.conteo['Falta']
+            ],
+            backgroundColor: ['#059669', '#D97706', '#EA580C', '#0284C7', '#374151'],
             borderColor: '#FFFFFF',
             borderWidth: 3,
             hoverOffset: 6
@@ -511,15 +599,36 @@
         if (record) {
           const bgCol = record.color || '#3B82F6';
           cell.style.borderColor = bgCol;
-          cell.innerHTML += `
-            <div class="mt-1 flex flex-col gap-1">
-              <span class="px-1 py-0.5 rounded text-[9px] text-white text-center font-bold" style="background-color: ${bgCol}">${record.hora}</span>
-            </div>`;
+
+          if (record.estado === 'Falta Justificada' || record.estado === 'FJ') {
+            const motivoTooltip = record.motivo || record.observacion || 'Falta Justificada';
+            cell.className += ' bg-sky-50/60';
+            cell.innerHTML += `
+              <div class="mt-1 flex flex-col gap-1" title="${motivoTooltip}">
+                <span class="px-1 py-0.5 rounded text-[8px] bg-sky-600 text-white text-center font-bold tracking-tight">FJ</span>
+              </div>`;
+          } else {
+            cell.innerHTML += `
+              <div class="mt-1 flex flex-col gap-1">
+                <span class="px-1 py-0.5 rounded text-[9px] text-white text-center font-bold" style="background-color: ${bgCol}">${record.hora}</span>
+              </div>`;
+          }
         } else if (feriado) {
           cell.className += ' bg-indigo-50 border-indigo-200';
+          let bgBadge = 'bg-indigo-600';
+          let textBadge = 'FERIADO';
+
+          if (feriado.nombre.includes('Gestión')) {
+            bgBadge = 'bg-purple-600';
+            textBadge = 'GESTIÓN';
+          } else if (feriado.nombre.includes('Paseo') || feriado.nombre.includes('Estudiante')) {
+            bgBadge = 'bg-teal-600';
+            textBadge = 'PASEO';
+          }
+
           cell.innerHTML += `
             <div class="mt-1 flex flex-col gap-1" title="${feriado.nombre}">
-              <span class="px-1 py-0.5 rounded text-[8px] bg-indigo-600 text-white text-center font-bold">FERIADO</span>
+              <span class="px-1 py-0.5 rounded text-[8px] ${bgBadge} text-white text-center font-bold uppercase tracking-tight">${textBadge}</span>
             </div>`;
         } else if (esFalta) {
           cell.className += ' bg-slate-100 border-slate-300';
@@ -533,7 +642,6 @@
       }
     }
 
-    // Exportar Informe COMPLETO del Mes en 1 SOLA HOJA A4
     function generarPDFDetallado() {
       const dni = document.getElementById('dniEstudiante').innerText;
       const nombre = document.getElementById('nombreEstudiante').innerText;
@@ -542,21 +650,20 @@
       const anioNum = document.getElementById('anio').value;
       const logoUrl = document.getElementById('logoInstitucion').src;
 
-      // Obtención de métricas KPI
       const kpiMP = document.getElementById('kpiMuyPuntual').innerText;
       const cntMP = document.getElementById('cntMuyPuntual').innerText;
       const kpiP = document.getElementById('kpiPuntual').innerText;
       const cntP = document.getElementById('cntPuntual').innerText;
       const kpiT = document.getElementById('kpiTardanza').innerText;
       const cntT = document.getElementById('cntTardanza').innerText;
+      const kpiFJ = document.getElementById('kpiFaltaJustificada').innerText;
+      const cntFJ = document.getElementById('cntFaltaJustificada').innerText;
       const kpiF = document.getElementById('kpiFalta').innerText;
       const cntF = document.getElementById('cntFalta').innerText;
 
-      // Render gráfico como imagen de alta resolución
       const chartCanvas = document.getElementById('chartAsistencia');
       const chartImgData = chartCanvas.toDataURL('image/png', 1.0);
 
-      // Limpieza de estilos pesados para la tabla en PDF
       const tablaOriginal = document.getElementById('seccionTablaDetallada').querySelector('table').cloneNode(true);
       tablaOriginal.querySelectorAll('th, td').forEach(el => {
         el.style.padding = '3px 6px';
@@ -564,12 +671,10 @@
       });
 
       const contenedorPDF = document.createElement('div');
-      // Tamaño A4 exacto: 210mm ancho
       contenedorPDF.style.width = '794px';
       contenedorPDF.className = 'p-6 bg-white text-slate-800 text-xs space-y-3 font-sans';
 
       contenedorPDF.innerHTML = `
-        <!-- Encabezado compacto -->
         <div class="border-b-2 border-indigo-950 pb-2 flex justify-between items-center">
           <div class="flex items-center gap-3">
             <img src="${logoUrl}" class="w-10 h-10 object-contain">
@@ -584,76 +689,69 @@
           </div>
         </div>
 
-        <!-- Ficha de Datos del Estudiante -->
         <div class="bg-indigo-950 text-white p-2.5 rounded-lg text-[10px] grid grid-cols-3 gap-2 border border-indigo-900 shadow-xs">
           <p><span class="text-indigo-300 font-semibold">Estudiante:</span> <br><strong class="text-amber-400 text-[11px]">${nombre}</strong></p>
           <p><span class="text-indigo-300 font-semibold">DNI:</span> <br><strong>${dni}</strong></p>
           <p><span class="text-indigo-300 font-semibold">Grado y Sección:</span> <br><strong>${grado}</strong></p>
         </div>
 
-        <!-- Estructura principal en 2 columnas para optimizar espacio vertical -->
         <div class="grid grid-cols-12 gap-3 items-start">
-          
-          <!-- Columna Izquierda: KPIs + Gráfico 3D (4 columnas de 12) -->
           <div class="col-span-4 space-y-2.5">
-            
-            <!-- Resumen KPI -->
             <div class="bg-slate-50 p-2 rounded-lg border border-slate-200">
               <h3 class="text-[9px] font-black text-slate-700 uppercase tracking-wider mb-1.5 text-center border-b border-slate-200 pb-1">
                 Resumen de Métricas
               </h3>
-              <div class="grid grid-cols-2 gap-1.5 text-center">
+              <div class="grid grid-cols-2 gap-1 text-center">
                 <div class="bg-emerald-50 border border-emerald-200 p-1 rounded">
-                  <p class="text-[8px] text-emerald-800 font-bold uppercase">Muy Puntual</p>
+                  <p class="text-[7px] text-emerald-800 font-bold uppercase">Muy Puntual</p>
                   <p class="text-xs font-black text-emerald-600">${kpiMP}</p>
                   <p class="text-[7px] text-emerald-700">${cntMP}</p>
                 </div>
                 <div class="bg-amber-50 border border-amber-200 p-1 rounded">
-                  <p class="text-[8px] text-amber-800 font-bold uppercase">Puntual</p>
+                  <p class="text-[7px] text-amber-800 font-bold uppercase">Puntual</p>
                   <p class="text-xs font-black text-amber-600">${kpiP}</p>
                   <p class="text-[7px] text-amber-700">${cntP}</p>
                 </div>
                 <div class="bg-orange-50 border border-orange-200 p-1 rounded">
-                  <p class="text-[8px] text-orange-800 font-bold uppercase">Tardanza</p>
+                  <p class="text-[7px] text-orange-800 font-bold uppercase">Tardanza</p>
                   <p class="text-xs font-black text-orange-600">${kpiT}</p>
                   <p class="text-[7px] text-orange-700">${cntT}</p>
                 </div>
-                <div class="bg-slate-200 border border-slate-300 p-1 rounded">
-                  <p class="text-[8px] text-slate-800 font-bold uppercase">Falta</p>
+                <div class="bg-sky-50 border border-sky-200 p-1 rounded">
+                  <p class="text-[7px] text-sky-800 font-bold uppercase">Falta Just. (FJ)</p>
+                  <p class="text-xs font-black text-sky-600">${kpiFJ}</p>
+                  <p class="text-[7px] text-sky-700">${cntFJ}</p>
+                </div>
+                <div class="col-span-2 bg-slate-200 border border-slate-300 p-1 rounded">
+                  <p class="text-[7px] text-slate-800 font-bold uppercase">Falta Injustificada</p>
                   <p class="text-xs font-black text-slate-800">${kpiF}</p>
                   <p class="text-[7px] text-slate-600">${cntF}</p>
                 </div>
               </div>
             </div>
 
-            <!-- Gráfico de Distribución -->
             <div class="border border-slate-200 rounded-lg p-2 bg-white flex flex-col items-center justify-center text-center">
-              <h3 class="text-[9px] font-bold text-slate-700 uppercase mb-1">Distribución Percentual</h3>
+              <h3 class="text-[9px] font-bold text-slate-700 uppercase mb-1">Distribución Porcentual</h3>
               <img src="${chartImgData}" class="w-[155px] h-auto object-contain mx-auto">
             </div>
 
-            <!-- Leyenda / Firma -->
             <div class="border-t border-slate-200 pt-3 mt-4 text-center">
               <div class="w-28 border-b border-slate-400 mx-auto mb-1"></div>
               <p class="text-[8px] font-bold text-slate-600">Firma / Sello Dirección</p>
             </div>
-
           </div>
 
-          <!-- Columna Derecha: Tabla Detallada (8 columnas de 12) -->
           <div class="col-span-8 border border-slate-200 rounded-lg p-2 bg-white">
             <h3 class="text-[10px] font-bold text-slate-800 mb-1.5 flex items-center gap-1">
-              <i class="fa-solid fa-list-check text-indigo-600"></i> Registro Detallado Diario
+              <i class="fa-solid fa-list-check text-indigo-600"></i> Registro Detallado Diario y Justificaciones
             </h3>
             <div class="overflow-hidden">
               ${tablaOriginal.outerHTML}
             </div>
           </div>
-
         </div>
       `;
 
-      // Configuración estricta de PDF para encajar perfectamente en 1 hoja A4
       const opciones = {
         margin: [5, 5, 5, 5],
         filename: `Reporte_Mensual_${dni}_${mesNombre}.pdf`,
