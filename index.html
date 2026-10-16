@@ -1,4 +1,31 @@
- </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I.E. Guillermo Pinto Ismodes - Control de Asistencia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js y Plugin DataLabels -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .chart-container-3d {
+      filter: drop-shadow(0px 8px 6px rgba(15, 23, 42, 0.22));
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen p-3 md:p-6">
+  
+  <div id="reporteCompleto" class="max-w-7xl mx-auto space-y-6">
+    
+    <!-- Encabezado Institucional -->
+    <header class="bg-indigo-950 text-white rounded-2xl p-5 shadow-xl border-b-4 border-amber-500 relative overflow-hidden">
+      <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl text-white pointer-events-none">
+        <i class="fa-solid fa-graduation-cap"></i>
+      </div>
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
         
         <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
